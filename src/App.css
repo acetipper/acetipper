@@ -1,0 +1,76 @@
+ .Row
+{
+    display: table;
+    table-layout: fixed; /*Optional*/
+    padding-top: 10px; /*Optional*/
+    padding-bottom: 10px; /*Optional*/
+}
+.Column
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.Column-Top
+{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.Spinner-Column
+{
+    display: table-cell;
+    border:0px solid red;
+    vertical-align: middle;
+    padding-top:30px;
+    padding-left:10px;
+}
+
+.listening
+{
+  position:relative;
+  top:10px;
+  font-size:1.8em;
+  opacity:0.5;
+  color:#d90303;
+}
+
+.send-bch
+{
+  font-size:0.85em;
+  position:relative;
+  left:0px;
+  top:8px;
+  opacity:0.8;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #2d3e50;
+  height: 100px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.App-content {
+  margin-top:50px;
+  padding-left: 20px;
+  text-align:left;
+}
+
+.App ul, .App h2 {
+  text-align: left;
+}
+

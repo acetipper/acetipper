@@ -1,0 +1,38 @@
+{
+  "name": "ace-tipper",
+  "license": "MIT",
+  "description": "Bitcoin Cash (BCH) physical tipping using paper wallets and tip manager.",
+  "author": "AceTipper @ gmail.com",
+  "version": "0.9.0",
+  "private": false,
+  "keywords": ["bitcoin cash", "bch", "tipping", "tipper", "tip", "paper wallet"],
+  "dependencies": {
+    "qrcode" : "1.2.0",
+    "react-social-icons": "3.0.0",
+    "font-awesome": "latest",
+    "@fortawesome/free-solid-svg-icons": "latest",
+    "@fortawesome/react-fontawesome": "latest",
+    "@fortawesome/fontawesome-svg-core": "latest",
+    "react-to-print": "latest",
+    "@material-ui/core": "1.5.0",
+    "redux": "4.0.0",
+    "react-router-dom": "4.3.1",
+    "react-spinkit": "3.0.0",
+    "node-sass": "^4.9.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-bootstrap": "0.32.1",
+    "react-scripts": "1.1.1",
+    "react-currency-formatter": "1.1.0",
+    "sass-loader": "^7.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "webpack",
+    "test": "ls",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "bitbox-cli": "1.4.9"
+  }
+}
