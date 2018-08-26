@@ -4,7 +4,7 @@ import TxList from './TxList';
 import SeedList from './SeedList';
 import Donation from './Donation';
 import BCH from './bch';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {HashRouter, Route } from "react-router-dom";
 import './App.css';
 import {store} from './store';
 import {axn_newTip, axn_setUsdBch} from './actions';
@@ -41,38 +41,41 @@ class App extends Component {
                 <Navbar>
                   <Navbar.Header>
                     <Navbar.Brand>
-                      <a href="/">Ace Tipper! (alpha)</a>
+                      <a href="#/txs">Ace Tipper! (alpha)</a>
                     </Navbar.Brand>
                   </Navbar.Header>
                   <Nav>
-                    <NavItem href="/txs">
+                    <NavItem href="#/txs">
                       Transactions
                     </NavItem>
-                    <NavItem href="/seed">
+
+                    <NavItem href="#/seed">
                       Seed List
                     </NavItem>
 
-                    <NavItem href="/txs">
+                    <NavItem href="#/txs">
                       BCH = <Currency quantity={store.getState().USD_BCH} currency="USD" /> USD
                     </NavItem>
 
-                    <NavItem href="/donate">
-                      Donate / Contact
+                    <NavItem href="#/donate">
+                      Donate / Contacts
                     </NavItem>
+
                   </Nav>
                 </Navbar>
 
-                <Router>
+                <HashRouter>
                     <div className='App-content'>
                         <Route exact path="/" component={TxList} />
                         <Route exact path="/txs" component={TxList} />
                         <Route exact path="/seed" component={SeedList} />
                         <Route exact path="/donate" component={Donation} />
                     </div>
-                </Router>
+                </HashRouter>
             </div>
         );
     }
 }
 
 export default App;
+

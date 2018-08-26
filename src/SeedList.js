@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Label from 'react-bootstrap/lib/Label';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import BCH from './bch';
 
 class SeedList extends Component { 
 

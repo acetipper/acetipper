@@ -8,6 +8,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -19,4 +20,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.console_history
+.idea
+
+deploy-to-prod.bat
+/fixes/dev-deploy-package-json.bat
+/fixes/prod-deploy-package-json.bat
