@@ -17,6 +17,7 @@ import {Util} from './Util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAward } from '@fortawesome/free-solid-svg-icons';
 
+var ace_debug = false;
 
 class Tx extends Component { 
 
@@ -66,23 +67,26 @@ class Tx extends Component {
 		var _this = this;
 		var retry_secs = store.getState().retry_secs;
 
-					/// debug
-					// store.dispatch(axn_setFunding(tx.address, 0.34534545));				
-					//  this.setState( {
-					//  	listening: false,
-					//  	show_qr: false
-					//  });
-					// return;
+					if (ace_debug) {
+						store.dispatch(axn_setFunding(tx.address, 0.34534545));				
+						 this.setState( {
+						 	listening: false,
+						 	show_qr: false
+						 });
+
+						return;
+					}
 
 		BCH.BITBOX.Address.details(tx.address).then(
 
 			result => {
 
+				/// debug
 				//console.log(result);
 
 				var balance = parseFloat(result.balance) + parseFloat(result.unconfirmedBalance) + parseFloat(result.totalSent);
 				var appearances = parseInt(result.txApperances, 10) + parseInt(result.unconfirmedTxApperances, 10);
-				var total_sent_sat = parseInt(result.totalSentSat, 10)
+				var total_sent_sat = parseInt(result.totalSentSat, 10);
 
 				// This address does not appear in blockchain.
 				// It has not even been funded yet.
@@ -309,7 +313,8 @@ class Tx extends Component {
 		/// debug
 		// tx.accepted = true;
 		// show_award = true;
-		// show_listening = false;
+		//show_listening = true;
+		//this.state.show_qr=true;
 
 		let qr_code;
 
@@ -324,13 +329,9 @@ class Tx extends Component {
 
 			v_listening = (
 
-				<div className="Spinner-Column" style={{paddingLeft:'50px'}}>
-					<div className="listening">
-					listening
-					</div>
-
-					<div style={{'position':'relative', 'left':'125px', 'top':'-18px'}}>
-						<Spinner name="ball-scale-multiple" color="red"/>
+				<div className="Spinner-Column">
+					<div style={{'position':'relative', 'left':'60px', 'top':'40px'}}>
+						<Spinner name="timer" color="red"/>
 					</div>
 
 					<p className="send-bch">Send Some Bitcoin Cash</p>

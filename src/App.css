@@ -37,10 +37,10 @@
 
 .send-bch
 {
-  font-size:0.85em;
+  font-size:1.15em;
   position:relative;
   left:0px;
-  top:8px;
+  top:0px;
   opacity:0.8;
 }
 

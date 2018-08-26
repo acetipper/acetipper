@@ -28,7 +28,7 @@ class Donation extends Component {
 					<div style={{paddingTop:'20px'}}>
 						<SocialIcon url="http://twitter.com/bitcoin_tipping" />
 						<SocialIcon url="http://reddit.com/r/BitcoinTipping" />
-						<SocialIcon url="http://github.com/AceTipper/BitcoinTipping" />
+						<SocialIcon url="https://github.com/acetipper/acetipper" />
 					</div>
 				</div>
 				

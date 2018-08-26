@@ -92,6 +92,15 @@ class Certificate extends Component {
 					{qr_code}
 				</div>
 
+				<div style={{	fontSize:'0.85em', 
+								opacity: '0.8',
+								left:'220px', top:'415px', fontWeight:'bold', position:'absolute', 
+								background:"#f0f0f0", padding:"2px 7px 2px 7px" }}>
+
+					Follow the instructions at link to take your Bitcoin Cash  <br/>
+					This gift can be reclaimed if looks abandoned
+				</div>
+
 			</div>
 		);
 	}

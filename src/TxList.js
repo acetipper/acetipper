@@ -8,6 +8,8 @@ import {axn_newTip, axn_setTxError} from './actions';
 import {store} from './store';
 import {Util} from './Util';
 
+var ace_debug = false;
+
 class TxList extends Component { 
 
 	onNewTip() {
@@ -63,8 +65,7 @@ class TxList extends Component {
 
 		var v_tips = tips.map((tx, i) => {
 
-			/// debug
-			// if (i > 0) return (<div key={tx.address} />);
+			if (ace_debug && i > 0) return (<div key={tx.address} />);
 
 			var tx_view = Util.getTxView(tx.address);
 

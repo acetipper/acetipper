@@ -121,13 +121,13 @@ class TxValue extends Component {
 					<div className="Column-Top" style={{fontSize:'1.5em', paddingTop:'5px'}}>
 						<Label bsStyle={style} style={{fontSize:'1.0em', color, background}}>
 							#{tx.index + 1}{labelPostfix}
-							 (<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />)
+							 {/*(<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />)*/}
 						</Label> 
 					</div>
 
-					{/*<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingLeft: '7px'}}>
+					<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingLeft: '7px'}}>
 						<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />
-					</div> */}
+					</div> 
 
 					{v_award}	
 
