@@ -1,9 +1,15 @@
 ## AceTipper
 
-## Setup
+## For End-Users
 
-1. [Install `ace-tipper`](https://www.npmjs.com/package/ace-tipper) globally
-    * `npm install ace-tipper@0.9.1 --global`
-2. `node ace-tipper` to start the application
-3. Open a browser to `http://localhost:3000/`
-4. Done
+1. Download installer [here](https://github.com/acetipper/acetipper/releases)
+2. Install and Enjoy
+
+
+## For Developers
+
+0. `git clone https://github.com/acetipper/acetipper.git`
+1. `cd acetipper`
+2. `npm install`
+3. `npm start`
+
