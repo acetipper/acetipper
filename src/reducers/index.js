@@ -100,12 +100,12 @@ function axn_setTxError(state, error) {
 
 function axn_setGiftedOn(state, address, date) {
 
-	var key = 'ace-tipper-gifted:' + address;
-	localStorage.setItem(key, 'true');	
+	var key = 'ace-tipper-gifted-on-date:' + address;
+	localStorage.setItem(key, date);	
 
 	var gifted = state.gifted;
 
-	gifted[address] = true;
+	gifted[address] = date;
 	
 	return {
 		...state,

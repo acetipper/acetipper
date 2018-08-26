@@ -47,13 +47,15 @@
     "update-electron-app": "1.3.0",
     "wait-on": "2.1.0"
   },
+
   "devDependencies": {
     "babel-cli": "6.26.0",
     "electron": "2.0.2",
     "electron-builder": "20.28.2"
   },
-  "main": "public/electron.js",
+
   "homepage": "./",
+
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
@@ -65,8 +67,10 @@
     "fix-bip68":"copy /Y .\\node_modules\\bip68\\index.js .\\node_modules\\bip68\\index-txt && babel --presets es2015 ./node_modules/bip68/index-txt -o ./node_modules/bip68/index.js",
     "fix-util":"copy /Y .\\node_modules\\bitbox-cli\\lib\\Util.js .\\node_modules\\bitbox-cli\\lib\\Util-txt && babel --presets es2015 ./node_modules/bitbox-cli/lib/Util-txt -o ./node_modules/bitbox-cli/lib/Util.js",
 
-    "myinst":"yarn install && yarn fix-bip68 && yarn fix-mangle",
+    "install_and_fix":"yarn install && yarn fix-bip68 && yarn fix-mangle",
     "build": "yarn react-build && yarn electron-build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
-  }
+  },
+
+  "main": "public/electron.js"
 }

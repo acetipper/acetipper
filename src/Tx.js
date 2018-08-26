@@ -6,7 +6,7 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import Spinner from 'react-spinkit';
 import TxValue from './TxValue';
 import Certificate from './Certificate';
-import {axn_setTxView, axn_setTxError, axn_pruneLastTip, axn_setFunding, axn_newTip} from './actions';
+import {axn_setGiftedOn, axn_setTxView, axn_setTxError, axn_pruneLastTip, axn_setFunding, axn_newTip} from './actions';
 import {store} from './store';
 import BCH from './bch';
 import Modal from 'react-bootstrap/lib/Modal';
@@ -155,7 +155,7 @@ class Tx extends Component {
 		this.setState({show_printer: true});
 	}
 
-	take_by_date() {
+	get_take_by_date() {
 		var tx = this.props.tx;
 		var key = 'ace-tipper-take-by-date:' + tx.address;
 
@@ -173,7 +173,8 @@ class Tx extends Component {
 		return c;
 	}
 
-	gifted_on_date() {
+	get_gifted_on_date() {
+
 		var tx = this.props.tx;
 		var key = 'ace-tipper-gifted-on-date:' + tx.address;
 
@@ -195,7 +196,7 @@ class Tx extends Component {
 		var value_bch = tx.value;
 		var value_usd = store.getState().USD_BCH * tx.value;
 
-		let take_by_date = this.take_by_date();
+		let take_by_date = this.get_take_by_date();
 
 		let v_cert = (
 			<Certificate 	ref={el => (this.componentRef = el)} 
@@ -244,6 +245,10 @@ class Tx extends Component {
 	vButtonGroupMarkAsGifted() {
 		var tx = this.props.tx;
 
+		if (!this.state.listening && this.state.show_qr) {
+			return;
+		}
+
 		if (tx.accepted) {
 			return;
 		}
@@ -284,10 +289,9 @@ class Tx extends Component {
 		var tx = this.props.tx;
 
 		var key = 'ace-tipper-take-by-date:' + tx.address;
-		localStorage.setItem(key, this.take_by_date());
+		localStorage.setItem(key, this.get_take_by_date());
 
-		key = 'ace-tipper-gifted-on-date:' + tx.address;
-		localStorage.setItem(key, this.gifted_on_date());
+		store.dispatch( axn_setGiftedOn(tx.address, this.get_gifted_on_date()) );
 	}
 
 	render() {
