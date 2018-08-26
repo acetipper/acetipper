@@ -430,6 +430,7 @@ class Tx extends Component {
 								paddingLeft:"25px", 
 								paddingBottom: paddingBottom + "px", 
 								marginBottom:"15px", 
+								marginTop:"15px", 
 								background:'#f6f8fa'}}>
 
 					<div className="Row">

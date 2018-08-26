@@ -60,6 +60,13 @@ class TxValue extends Component {
 		store.dispatch( axn_setTxView(tx.address, 'default') );
 	}
 
+	hasBeenGifted() {
+		var tx = this.props.tx;
+		var key = 'ace-tipper-gifted-on-date:' + tx.address;
+		
+		return !!localStorage.getItem(key);
+	}
+
 	render() {
 
 		var tx = this.props.tx;
@@ -74,11 +81,22 @@ class TxValue extends Component {
 		}
 
 		var background, color;
+		var style = 'info';
+		var beenGifted = this.hasBeenGifted();
+		var labelPostfix = ' - needs gifting ';
+
+		if (beenGifted) {
+			style = 'success';
+			labelPostfix = ' - been gifted ';
+		}
 
 		if (tx.accepted) {
 			background = '#f6b500';
 			color = 'black';
+			labelPostfix = ' - accepted ';
 		}
+
+		color = 'black';
 		
 		var v_award;
 
@@ -100,13 +118,16 @@ class TxValue extends Component {
 			<div>
 				<div className="Row" style={{border:'0px solid red'}}>
 
-					<div className="Column-Top" style={{paddingTop:'5px'}}>
-						<Label bsStyle='success' style={{fontSize:'1.0em', opacity:'0.6', color, background}}>#{tx.index + 1}</Label> 
+					<div className="Column-Top" style={{fontSize:'1.5em', paddingTop:'5px'}}>
+						<Label bsStyle={style} style={{fontSize:'1.0em', color, background}}>
+							#{tx.index + 1}{labelPostfix}
+							 (<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />)
+						</Label> 
 					</div>
 
-					<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingLeft: '7px'}}>
+					{/*<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingLeft: '7px'}}>
 						<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />
-					</div>
+					</div> */}
 
 					{v_award}	
 

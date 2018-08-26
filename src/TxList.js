@@ -73,13 +73,15 @@ class TxList extends Component {
 			);
 		});
 
+		v_tips.reverse();
+
 		var v_new_tip = this._vNewTip();
 
 		var v_error;
 
 		if (store.getState().tx_error) {
 			v_error = (
-				<Alert bsStyle="warning">
+				<Alert bsStyle="warning" style={{marginTop:'20px'}}>
 				{store.getState().tx_error}
 				</Alert>
 			);
@@ -89,11 +91,9 @@ class TxList extends Component {
 			<div>
 				<h1>Transactions</h1>
 
-				{v_tips}
-
-				{v_error}
-
 				{v_new_tip}
+				{v_error}
+				{v_tips}				
 
 			</div>
 		);	
