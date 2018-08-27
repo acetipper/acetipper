@@ -1,9 +1,14 @@
 import BCH from '../bch';
+import {Util} from '../Util';
 
 export default (in_state, action) => {
 
 	if (action.type === 'axn_newTip') {
 		return axn_newTip(in_state);
+	}
+
+	if (action.type === 'axn_hideTx') {
+		return axn_hideTx(in_state, action.address);
 	}
 
 	if (action.type === 'axn_setTxError') {
@@ -33,6 +38,14 @@ export default (in_state, action) => {
 	}
 
 	return in_state;
+}
+
+function axn_hideTx(state, address) {
+	Util.hideTx(address);
+
+	return {
+		...state
+	};
 }
 
 function axn_setFunding(state, address, value, accepted) {

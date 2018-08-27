@@ -40,4 +40,20 @@ util.isGifted = function(address) {
 	return gifted === 'true' || false;
 };
 
+util.hideTx = function(address) {
+
+	var key = 'ace-tipper-hidden-address:' + address;
+
+	localStorage.setItem(key, 'true');
+};
+
+util.getDisplay = function(tx) {
+
+	var key = 'ace-tipper-hidden-address:' + tx.address;
+
+	if (localStorage.getItem(key)) return 'none';
+
+	return 'default';
+};
+
 export const Util = util;

@@ -11,6 +11,13 @@ export function axn_setTxError(tx_error) {
 	}
 }
 
+export function axn_hideTx(address) {
+	return {
+		type: 'axn_hideTx',
+		address
+	}
+}
+
 export function axn_setGiftedOn(address, date) {
 	return {
 		type: 'axn_setGiftedOn',

@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAward } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/lib/Button';
-import {axn_setTxView} from './actions';
+import {axn_hideTx, axn_setTxView} from './actions';
 
 class TxValue extends Component { 
 
@@ -60,6 +60,13 @@ class TxValue extends Component {
 		store.dispatch( axn_setTxView(tx.address, 'default') );
 	}
 
+	onHideTx() {
+
+		var tx = this.props.tx;
+
+		store.dispatch( axn_hideTx(tx.address) );
+	}
+
 	hasBeenGifted() {
 		var tx = this.props.tx;
 		var key = 'ace-tipper-gifted-on-date:' + tx.address;
@@ -85,7 +92,7 @@ class TxValue extends Component {
 		var beenGifted = this.hasBeenGifted();
 		var labelPostfix = ' - needs gifting ';
 
-		if (tx.value == 0) {
+		if (tx.value === 0) {
 			labelPostfix = ' - needs funding ';
 		}
 
@@ -112,6 +119,11 @@ class TxValue extends Component {
 					<Button bsStyle="warning"  bsSize="xsmall" style={{marginLeft:'25px', position:'relative', top:'-5px'}}
 							onClick={() => this.onUnHideIt.bind(this)() }>
 			          detail view
+			        </Button>
+
+					<Button bsStyle="warning"  bsSize="xsmall" style={{marginLeft:'15px', position:'relative', top:'-5px'}}
+							onClick={() => this.onHideTx.bind(this)() }>
+			          hide forever
 			        </Button>
 
 				</div>

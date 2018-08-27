@@ -70,7 +70,7 @@ class TxList extends Component {
 			var tx_view = Util.getTxView(tx.address);
 
 			return (
-				<Tx key={tx.address} tx={tx} tx_view={tx_view} />
+				<Tx key={tx.address} tx={tx} tx_view={tx_view} display={Util.getDisplay(tx)} />
 			);
 		});
 

@@ -83,7 +83,7 @@ class Tx extends Component {
 			result => {
 
 				/// debug
-				//console.log(result);
+				console.log(result);
 
 				var balance = parseFloat(result.balance) + parseFloat(result.unconfirmedBalance) + parseFloat(result.totalSent);
 				var appearances = parseInt(result.txApperances, 10) + parseInt(result.unconfirmedTxApperances, 10);
@@ -106,11 +106,23 @@ class Tx extends Component {
 					return;
 				}
 
+				if (balance === 0) {
+					// appearances are not 0, so it must be accepted
+					store.dispatch(axn_setFunding(tx.address, balance, true));				
+					store.dispatch(axn_newTip());				
+
+					_this.setState( {
+						listening: false,
+						show_qr: false
+					});			
+
+					return;
+				}
+
 				// It has been funded, but not accepted
 				if (appearances === 1 ) {
 
 					store.dispatch(axn_setFunding(tx.address, balance, false));		
-
 					store.dispatch(axn_newTip());				
 
 					_this.setState( {
@@ -381,7 +393,7 @@ class Tx extends Component {
 		if (show_award && tx_is_default_view) {
 
 			v_award = (
-				<div className="Column" style={{verticalAlign:'top', paddingTop:'5px', paddingLeft:'25px', paddingRight: '20px'}}>
+				<div className="Column" style={{verticalAlign:'top', paddingTop:'5px', paddingLeft:'75px', paddingRight: '20px'}}>
 					<div style={{paddingLeft:'15px'}}>
 				 		<FontAwesomeIcon icon={faAward} size="7x"  style={{color:'#f6b500'}}/>
 				 	</div>
@@ -426,7 +438,7 @@ class Tx extends Component {
 
 		return (
 
-			<div style={{position:'relative'}}>
+			<div style={{position:'relative', display: this.props.display}}>
 
 				<div style={{	borderBottom:"0px solid #bbb", 
 								paddingTop:"1px", 
