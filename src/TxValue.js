@@ -85,6 +85,10 @@ class TxValue extends Component {
 		var beenGifted = this.hasBeenGifted();
 		var labelPostfix = ' - needs gifting ';
 
+		if (tx.value == 0) {
+			labelPostfix = ' - needs funding ';
+		}
+
 		if (beenGifted) {
 			style = 'success';
 			labelPostfix = ' - been gifted ';

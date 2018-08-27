@@ -55,6 +55,7 @@ class Tx extends Component {
 		var now = +new Date();
 
 		if (now - this.state.start_trying_ms > (store.getState().listening_timeout_secs * 1000) ) {
+
 			return true;
 		}
 
@@ -108,7 +109,8 @@ class Tx extends Component {
 				// It has been funded, but not accepted
 				if (appearances === 1 ) {
 
-					store.dispatch(axn_setFunding(tx.address, balance, false));				
+					store.dispatch(axn_setFunding(tx.address, balance, false));		
+
 					store.dispatch(axn_newTip());				
 
 					_this.setState( {

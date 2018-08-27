@@ -54,47 +54,57 @@ class Certificate extends Component {
 
 		var qr_code = (<QRCode value={wif} />);
 
-		return (
-			<div style={{padding:'25px', opacity:'0.85'}}>
+		var deltax = -174;
+		var deltay = -65;
 
-				<div style={{padding:'25px', width:'600px', border:'0px solid #444', margin:'0 auto'}}>
+		return (
+			<div style={{padding:'25px', opacity:'0.85', border:"0px solid red"}}>
+
+				<div style={{height:'400px'}}>
+				</div>
+
+				{/*<div style={{padding:'25px', width:'600px', border:'0px solid #444', margin:'0 auto'}}>*/}
+				<div style={{left:'0px', top:'0px', width:'600px', position:'absolute'}}>
 					<img src={template} style={{width: w, height:h}} alt="" />
 				</div>
 
-				<div style={{textShadow:"3px 2px 5px #000", fontSize: layout.size + 'em', left: layout.left + 'px', top:'86px', fontWeight:'bold', position:'absolute', color:'#5a5a5a' }}>
+				<div style={{textShadow:"3px 2px 5px #000", fontSize: layout.size + 'em', 
+							 left: (layout.left + deltax) + 'px', 
+							 top: (86 + deltay) + 'px', 
+							 fontWeight:'bold', position:'absolute', color:'#5a5a5a' }}>
 					{value_usd}
 				</div>
 
-				<div style={{fontSize:'1.0em', left: '525px', top:'345px', fontWeight:'bold', position:'absolute' }}>
+				<div style={{fontSize:'1.0em', left: (525 + deltax) + 'px', top:(345 + deltay) + 'px', fontWeight:'bold', position:'absolute' }}>
 					{value_usd}
 				</div>
 
 
 
-				<div style={{fontSize:'0.9em', left:'551px', top:'123px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
+				<div style={{fontSize:'0.9em', left:(551 + deltax) + 'px', top:(123 + deltay) + 'px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
 					{date}
 				</div>
 
-				<div style={{fontSize:'0.9em', left:'551px', top:'174px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
+				<div style={{fontSize:'0.9em', left:(551 + deltax) + 'px', top:(174 + deltay) + 'px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
 					{bch_btc}
 				</div>
 
-				<div style={{fontSize:'0.9em', left:'551px', top:'226px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
+				<div style={{fontSize:'0.9em', left:(551 + deltax) + 'px', top:(226 + deltay) + 'px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
 					{this.props.value_bch}
 				</div>
 
-				<div style={{fontSize:'0.9em', left:'551px', top:'282px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
+				<div style={{fontSize:'0.9em', left:(551 + deltax) + 'px', top:(282 + deltay) + 'px', fontWeight:'bold', position:'absolute', background:"#dedede", padding:"1px 7px 1px 7px" }}>
 					{take_by_date}
 				</div>
 
 
-				<div style={{left:"221px", top:"98px", position:'absolute'}}>
+				<div style={{left:(221 + deltax) + 'px', top:(98 + deltay) + 'px', position:'absolute'}}>
 					{qr_code}
 				</div>
 
 				<div style={{	fontSize:'0.85em', 
 								opacity: '0.8',
-								left:'220px', top:'415px', fontWeight:'bold', position:'absolute', 
+								left:(220 + deltax) + 'px', top:(415 + deltay) + 'px', fontWeight:'bold', position:'absolute', 
 								background:"#f0f0f0", padding:"2px 7px 2px 7px" }}>
 
 					Follow the instructions at link to take your Bitcoin Cash  <br/>
