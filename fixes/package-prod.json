@@ -3,7 +3,7 @@
   "license": "MIT",
   "description": "Bitcoin Cash (BCH) physical tipping using paper wallets and tip manager.",
   "author": "AceTipper @ gmail.com",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "private": true,
   
   "keywords": [
@@ -67,7 +67,7 @@
     "fix-bip68":"copy /Y .\\node_modules\\bip68\\index.js .\\node_modules\\bip68\\index-txt && babel --presets es2015 ./node_modules/bip68/index-txt -o ./node_modules/bip68/index.js",
     "fix-util":"copy /Y .\\node_modules\\bitbox-cli\\lib\\Util.js .\\node_modules\\bitbox-cli\\lib\\Util-txt && babel --presets es2015 ./node_modules/bitbox-cli/lib/Util-txt -o ./node_modules/bitbox-cli/lib/Util.js",
 
-    "install_and_fix":"yarn install && yarn fix-bip68 && yarn fix-mangle",
+    "install_all":"yarn install && yarn fix-bip68 && yarn fix-mangle && yarn build",
     "build": "yarn react-build && yarn electron-build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },

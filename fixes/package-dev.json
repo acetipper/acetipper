@@ -3,7 +3,7 @@
   "license": "MIT",
   "description": "Bitcoin Cash (BCH) physical tipping using paper wallets and tip manager.",
   "author": "AceTipper @ gmail.com",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "private": true,
 
   "keywords": [
