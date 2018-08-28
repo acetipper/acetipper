@@ -12,6 +12,10 @@ This app manages your tips, prints paper wallets of various designs, but also al
 
 If you have feedback I would love to hear about it.
 
+## reddit
+
+Join us at https://www.reddit.com/r/BitcoinTipping
+
 ## For End-Users
 
 1. Download installer [here](https://github.com/acetipper/acetipper/releases)
