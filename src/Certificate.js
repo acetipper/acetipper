@@ -40,7 +40,7 @@ class Certificate extends Component {
 		const date = Util.formatDate(new Date());
 		const take_by_date = Util.formatDate(this.props.take_by_date);
 
-		const value_usd = Math.floor(this.props.value_usd);
+		const value_usd = Math.ceil(this.props.value_usd);
 		const bch_btc = this._bch_btc()
 		const wif = this.props.wif;
 
@@ -108,7 +108,7 @@ class Certificate extends Component {
 								background:"#f0f0f0", padding:"2px 7px 2px 7px" }}>
 
 					Follow the instructions at link to take your Bitcoin Cash  <br/>
-					This gift can be reclaimed if looks abandoned
+					This gift can be taken back by gifter if looks abandoned
 				</div>
 
 			</div>

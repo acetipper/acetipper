@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Label from 'react-bootstrap/lib/Label';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import {Paper, Typography} from '@material-ui/core';
 
 class SeedList extends Component { 
 
@@ -26,7 +27,13 @@ class SeedList extends Component {
 
 		return (
 			<div>
-				<h2>Seed List</h2>
+				<h2>Seed List - Backup this up!</h2>
+
+				<Paper elevation={15} style={{marginTop:'20px', marginBottom:'30px'}}>
+			        <Typography style={{padding:"11px", color:"#0f0", background:"black", fontSize:'1.2em', fontFamily:'courier'}}>
+			          {this.state.mneumonic}
+			        </Typography>
+      			</Paper>
 
 				<ListGroup>
 					{vWords}

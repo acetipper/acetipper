@@ -344,11 +344,11 @@ class Tx extends Component {
 			v_listening = (
 
 				<div className="Spinner-Column">
-					<div style={{'position':'relative', 'left':'60px', 'top':'40px'}}>
+					<div style={{'position':'relative', 'left':'0px', 'top':'40px'}}>
 						<Spinner name="timer" color="red"/>
 					</div>
 
-					<p className="send-bch">Send Some Bitcoin Cash</p>
+					<p className="send-bch">Send Some Bitcoin Cash to Fund this New Tip</p>
 				</div>
 			);
 		}

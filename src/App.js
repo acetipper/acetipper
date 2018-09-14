@@ -3,6 +3,7 @@ import {Nav, Navbar, NavItem} from 'react-bootstrap/lib';
 import TxList from './TxList';
 import SeedList from './SeedList';
 import Donation from './Donation';
+import ImportSeedList from './ImportSeedList';
 import BCH from './bch';
 import {HashRouter, Route } from "react-router-dom";
 import './App.css';
@@ -41,7 +42,7 @@ class App extends Component {
                 <Navbar>
                   <Navbar.Header>
                     <Navbar.Brand>
-                      <a href="#/txs">Ace Tipper! (alpha)</a>
+                      <a href="#/txs">Ace Tipper!</a>
                     </Navbar.Brand>
                   </Navbar.Header>
                   <Nav>
@@ -49,12 +50,16 @@ class App extends Component {
                       Transactions
                     </NavItem>
 
-                    <NavItem href="#/seed">
-                      Seed List
-                    </NavItem>
-
                     <NavItem href="#/txs">
                       BCH = <Currency quantity={store.getState().USD_BCH} currency="USD" /> USD
+                    </NavItem>
+
+                    <NavItem href="#/seed">
+                      [Seed List]
+                    </NavItem>
+
+                    <NavItem href="#/import">
+                      [Import Seed List]
                     </NavItem>
 
                     <NavItem href="#/donate">
@@ -70,6 +75,7 @@ class App extends Component {
                         <Route exact path="/txs" component={TxList} />
                         <Route exact path="/seed" component={SeedList} />
                         <Route exact path="/donate" component={Donation} />
+                        <Route exact path="/import" component={ImportSeedList} />
                     </div>
                 </HashRouter>
             </div>
