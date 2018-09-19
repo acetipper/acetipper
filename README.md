@@ -1,7 +1,5 @@
 ## AceTipper
 
-![Make America Great Again](http://chatu.io/maga.jpg)
-
 AceTipper is an application that will help you print out paper-wallets for the purposes of tipping Bitcoin Cash (BCH) to people who may or may not be familiar with Bitcoin.
 
 This application looks to solve 2 problems that I saw.
