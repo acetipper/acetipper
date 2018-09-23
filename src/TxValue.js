@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Currency from 'react-currency-formatter';
 import Label from 'react-bootstrap/lib/Label';
 import {store} from './store';
 import TextField from '@material-ui/core/TextField';
@@ -141,8 +140,8 @@ class TxValue extends Component {
 						</Label> 
 					</div>
 
-					<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingLeft: '7px'}}>
-						<Currency quantity={store.getState().USD_BCH * tx.value} currency="USD" />
+					<div className="Column-Top" style={{fontWeight:'bold', opacity:'0.9', fontSize:'1.5em', paddingTop: '6px', paddingLeft: '7px'}}>
+						${Math.ceil(store.getState().USD_BCH * tx.value)}
 					</div> 
 
 					{v_award}	

@@ -6,6 +6,7 @@ import ButtonToolbar from 'react-bootstrap/lib/ButtonToolbar';
 import Spinner from 'react-spinkit';
 import TxValue from './TxValue';
 import Certificate from './Certificate';
+import Envelope from './Envelope';
 import {axn_setGiftedOn, axn_setTxView, axn_setTxError, axn_pruneLastTip, axn_setFunding, axn_newTip} from './actions';
 import {store} from './store';
 import BCH from './bch';
@@ -29,7 +30,8 @@ class Tx extends Component {
 			show_qr: true,
 			listening: true,
 			start_trying_ms: 0,
-			show_printer: false
+			show_printer: false,
+			show_printer_envelope: false,
 		};
 	} 
 
@@ -173,6 +175,11 @@ class Tx extends Component {
 		this.setState({show_printer: true});
 	}
 
+	onShowPrinterEnvelope() {
+
+		this.setState({show_printer_envelope: true});
+	}
+
 	get_take_by_date() {
 		var tx = this.props.tx;
 		var key = 'ace-tipper-take-by-date:' + tx.address;
@@ -210,7 +217,7 @@ class Tx extends Component {
 		return c;
 	}
 
-	vModal(tx) {
+	vModal_PrintCertificate(tx) {
 		var value_bch = tx.value;
 		var value_usd = store.getState().USD_BCH * tx.value;
 
@@ -221,7 +228,8 @@ class Tx extends Component {
 							wif={tx.wif}  
 							value_usd={value_usd} 
 							value_bch={value_bch} 
-							take_by_date={take_by_date} />
+							take_by_date={take_by_date}
+							tx_index={tx.index + 1} />
 		);
 
 		return (
@@ -254,6 +262,60 @@ class Tx extends Component {
 					<Alert bsStyle="info">
 						Bitcoin Cash amount = {value_bch} / USD amount = <Currency quantity={value_usd} currency="USD" />
 					</Alert>
+
+				</Modal.Body>
+			</Modal>
+		);
+	}
+
+	vModal_PrintEnvelope(tx) {
+
+		let v_envelope = (
+			<Envelope 	ref={el => (this.componentRef = el)} />
+		);
+
+		return (
+
+			<Modal show={this.state.show_printer_envelope} bsSize="large">
+				<Modal.Header>
+
+					<ButtonToolbar className="pull-right">
+					<ButtonGroup >
+							<ReactToPrint 
+								trigger={() => <Button bsStyle="success">Print</Button> }
+								content={() => this.componentRef}
+							/>
+					</ButtonGroup>
+					<ButtonGroup>
+							<Button bsStyle="default" 
+									onClick={() => this.setState({ show_printer_envelope: false })}>
+					          Close
+					        </Button>
+					</ButtonGroup>
+					</ButtonToolbar>
+
+					<div style={{height: "50px"}}>
+					</div>
+
+					<Alert bsStyle="info">
+						Note this is for size #10 Envelopes.<br/><br/>
+
+						Make sure the printer tray has been configured correctly to accept envelopes.<br/>
+						Make sure your envelope is in the tray.<br/><br/>
+
+						Press Print, then in Printer Settings: <br/>
+							<ul>
+								<li>set Layout to Portrait</li>
+								<li>set Paper size to Envelope #10</li>
+							</ul>
+							 <br/>
+					</Alert>
+
+				</Modal.Header>
+
+				<Modal.Body>
+
+					{v_envelope}
 
 				</Modal.Body>
 			</Modal>
@@ -355,6 +417,7 @@ class Tx extends Component {
 
 		let v_button_show_details = null;
 		let v_button_print = null;
+		let v_button_print_envelope = null;
 
 		if (show_button_details_as_hide) {
 			v_button_show_details = (
@@ -376,6 +439,12 @@ class Tx extends Component {
 			      print for gifting
 			    </Button>
 			);
+
+			v_button_print_envelope = (
+				<Button onClick={this.onShowPrinterEnvelope.bind(this)}>
+			      print envelope
+			    </Button>
+			);
 		}
 
 		var v_button_group_mark_as_gifted = this.vButtonGroupMarkAsGifted();
@@ -386,7 +455,8 @@ class Tx extends Component {
 			v_block_explorer = <div style={{marginBottom:'10px'}}><a href={'https://explorer.bitcoin.com/bch/address/' + tx.address} target="_blank">{tx.address}</a></div>;
 		}
 
-		let v_modal = this.vModal(tx);
+		let v_modal_print_certificate = this.vModal_PrintCertificate(tx);
+		let v_modal_print_envelope = this.vModal_PrintEnvelope(tx);
 
 		var v_award;
 
@@ -422,6 +492,10 @@ class Tx extends Component {
 
 					<ButtonGroup bsSize="xsmall">
 						{v_button_print}
+					</ButtonGroup>
+
+					<ButtonGroup bsSize="xsmall">
+						{v_button_print_envelope}
 					</ButtonGroup>
 
 					{v_button_group_mark_as_gifted}
@@ -468,7 +542,9 @@ class Tx extends Component {
 
 					{v_button_toolbar}
 
-					{v_modal}
+					{v_modal_print_certificate}
+
+					{v_modal_print_envelope}
 
 				</div>
 

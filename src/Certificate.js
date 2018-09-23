@@ -54,17 +54,20 @@ class Certificate extends Component {
 
 		var qr_code = (<QRCode value={wif} />);
 
-		var deltax = -174;
-		var deltay = -65;
+		var deltax = -144;
+		var deltay = -35;
+
+		var tx_index = this.props.tx_index;
+		var tx_index_x = 605;
+		var tx_index_y = 439;
 
 		return (
-			<div style={{padding:'25px', opacity:'0.85', border:"0px solid red"}}>
+			<div style={{padding:'25px', opacity:'0.95', border:"0px solid red"}}>
 
 				<div style={{height:'400px'}}>
 				</div>
 
-				{/*<div style={{padding:'25px', width:'600px', border:'0px solid #444', margin:'0 auto'}}>*/}
-				<div style={{left:'0px', top:'0px', width:'600px', position:'absolute'}}>
+				<div style={{left:'30px', top:'30px', width:'600px', position:'absolute'}}>
 					<img src={template} style={{width: w, height:h}} alt="" />
 				</div>
 
@@ -97,9 +100,12 @@ class Certificate extends Component {
 					{take_by_date}
 				</div>
 
-
 				<div style={{left:(221 + deltax) + 'px', top:(98 + deltay) + 'px', position:'absolute'}}>
 					{qr_code}
+				</div>
+
+				<div style={{left:(tx_index_x + deltax) + 'px', top:(tx_index_y + deltay) + 'px', position:'absolute', fontFamily:'courier'}}>
+					serial #{tx_index}
 				</div>
 
 				<div style={{	fontSize:'0.85em', 
