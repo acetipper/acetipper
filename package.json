@@ -30,7 +30,7 @@
     "electron-log": "2.2.17",
     "enzyme": "3.4.4",
     "font-awesome": "4.7.0",
-    "node-sass": "4.9.3",
+    "node-sass": "7.0.0",
     "prettier": "1.14.2",
     "qrcode.react": "0.8.0",
     "react": "16.4.2",
